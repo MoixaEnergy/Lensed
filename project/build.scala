@@ -11,7 +11,9 @@ object LensedBuild extends Build {
     val buildSettings: Seq[Setting[_]] = Defaults.defaultSettings ++ Seq[Setting[_]](
       organization := buildOrganization,
       version      := buildVersion,
-      scalaVersion := buildScalaVersion
+      scalaVersion := buildScalaVersion,
+       publishTo   := Option(Resolver.file("local repo", Path.userHome / "published-repo" / "repository"))
+
     )
   }
 
