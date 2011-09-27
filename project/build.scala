@@ -6,7 +6,7 @@ object LensedBuild extends Build {
   object BuildSettings {
     val buildOrganization = "com.github.gseitz.lensed"
     val buildVersion = "0.5"
-    val buildScalaVersion = "2.9.0-1"
+    val buildScalaVersion = "2.9.1"
 
     val buildSettings: Seq[Setting[_]] = Defaults.defaultSettings ++ Seq[Setting[_]](
       organization := buildOrganization,
@@ -18,7 +18,7 @@ object LensedBuild extends Build {
   }
 
   object Dependencies {
-    def scalaz   = "org.scalaz" %% "scalaz-core" % "6.0.1"
+    def scalaz   = "org.scalaz" %% "scalaz-core" % "6.0.3"
     def scalac   = "org.scala-lang" % "scala-compiler"
     def scalalib = "org.scala-lang" % "scala-library"
   }
