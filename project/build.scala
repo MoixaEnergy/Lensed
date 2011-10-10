@@ -1,22 +1,51 @@
 import sbt._
 import Keys._
 
+/*
+object Shared {
+    val buildOrganization = "com.github.gseitz.lensed"
+    val buildVersion = "0.5"
+    val buildScalaVersion = "2.9.1"
+
+    val publishTo = Option(Resolver.file("gitpages-local", Path.userHome / "public-repos"))
+
+    val buildSettings = Defaults.defaultSettings ++ Seq(
+      organization := buildOrganization,
+      version      := buildVersion,
+      scalaVersion := buildScalaVersion,
+      crossScalaVersions := Seq("2.9.0-1", "2.9.1"),
+      publishTo := Some("Scala Tools Nexus" at "http://nexus.scala-tools.org/content/repositories/releases/")
+//      publishTo    := Some("Scala Tools Nexus" at "http://nexus.scala-tools.org/content/repositories/releases/")
+//      publishTo <<= publishTo
+//      publishTo    := Option(Resolver.file("gitpages-local", Path.userHome / "public-repos"))
+    )
+}*/
+
 object LensedBuild extends Build {
 
   object BuildSettings {
     val buildOrganization = "com.github.gseitz.lensed"
     val buildVersion = "0.5"
-    val buildScalaVersion = "2.9.0-1"
+    val buildScalaVersion = "2.9.1"
 
-    val buildSettings: Seq[Setting[_]] = Defaults.defaultSettings ++ Seq[Setting[_]](
+//    val publishTo = Option(Resolver.file("gitpages-local", Path.userHome / "public-repos"))
+
+    val buildSettings = Defaults.defaultSettings ++ Seq(
       organization := buildOrganization,
       version      := buildVersion,
-      scalaVersion := buildScalaVersion
+      scalaVersion := buildScalaVersion,
+      publishTo := Option(Resolver.file("gitpages-local", Path.userHome / "public-repos")),
+      crossScalaVersions := Seq("2.9.0-1", "2.9.1")
     )
+//      publishTo := Some("Scala Tools Nexus" at "http://nexus.scala-tools.org/content/repositories/releases/")
+//      publishTo    := Some("Scala Tools Nexus" at "http://nexus.scala-tools.org/content/repositories/releases/")
+//      publishTo <<= publishTo
+//      publishTo    := Option(Resolver.file("gitpages-local", Path.userHome / "public-repos"))
+
   }
 
   object Dependencies {
-    def scalaz   = "org.scalaz" %% "scalaz-core" % "6.0.1"
+    def scalaz   = "org.scalaz" %% "scalaz-core" % "6.0.2"
     def scalac   = "org.scala-lang" % "scala-compiler"
     def scalalib = "org.scala-lang" % "scala-library"
   }
@@ -26,8 +55,9 @@ object LensedBuild extends Build {
 
   lazy val root = Project(
     id = "lensed",
-    base = file(".")
-  ) aggregate(annotation, plugin, examples)
+    base = file("."),
+    settings = buildSettings
+  ) aggregate(annotation, plugin)
 
   lazy val annotation = Project(
     id = "annotation",
@@ -48,11 +78,12 @@ object LensedBuild extends Build {
     )
   ) dependsOn (annotation)
 
+    /*
   lazy val examples = Project(
     id = "examples",
     base = file("examples")
   ) aggregate(testCaseClasses, usage)
-
+  */
 //  val pluginArtifact =
 
   lazy val testCaseClasses = Project(
@@ -72,6 +103,7 @@ object LensedBuild extends Build {
       libraryDependencies += scalaz
     )
   ) dependsOn (testCaseClasses)
+
 
 
 }
