@@ -4,7 +4,7 @@ import Keys._
 /*
 object Shared {
     val buildOrganization = "com.github.gseitz.lensed"
-    val buildVersion = "0.5"
+    val buildVersion = "0.5.1"
     val buildScalaVersion = "2.9.1"
 
     val publishTo = Option(Resolver.file("gitpages-local", Path.userHome / "public-repos"))
@@ -25,7 +25,7 @@ object LensedBuild extends Build {
 
   object BuildSettings {
     val buildOrganization = "com.github.gseitz.lensed"
-    val buildVersion = "0.5"
+    val buildVersion = "0.5.1"
     val buildScalaVersion = "2.9.1"
 
 //    val publishTo = Option(Resolver.file("gitpages-local", Path.userHome / "public-repos"))
