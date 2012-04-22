@@ -5,8 +5,8 @@ object LensedBuild extends Build {
 
   object BuildSettings {
     val buildOrganization = "com.github.gseitz.lensed"
-    val buildVersion = "0.5"
-    val buildScalaVersion = "2.9.1"
+    val buildVersion = "0.5.1"
+    val buildScalaVersion = "2.9.2"
 
     val buildSettings: Seq[Setting[_]] = Defaults.defaultSettings ++ Seq[Setting[_]](
       organization := buildOrganization,
